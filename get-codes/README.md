@@ -1,0 +1,1 @@
+自动获取 codeforces 上某特定用户的所有代码，以 `<ProblemName>+<ProblemId>+<ProblemRating>+<Author>+<SubmissionId>` 的格式保存于以用户名命名的子文件夹内，用以配合 `add-lens` 脚本。
