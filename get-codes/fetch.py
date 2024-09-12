@@ -63,15 +63,6 @@ def fetch_source(contest_id: int, submission_id: int) -> str:
     html = BeautifulSoup(html_str, 'html.parser')
     data = html.select(source_selector)
     return str(data[0].text)
-    # print(html_str)
-    # html = etree.HTML(html_str)
-    # print(html)
-    # html_data = html.xpath(source_XPath)
-    # ret = ""
-    # for i in html_data:
-    #     # print(i.text)
-    #     ret += i.text
-    # return ret
     
 
 def fetch_status(user_name: str, count: int = -1) -> str:
