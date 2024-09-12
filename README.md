@@ -5,3 +5,9 @@
 - add-lens 添加长度
 
     有时候需要看一个哥们的很多代码并且把长度标出来。手工干这些事情非常不健康。我们需要一个脚本。
+
+- get-code 添加长度 by @Inu-Dial (YangHao)
+
+    这个脚本可以爬取一个哥们最后提交的若干/所有代码，过滤非 AC 代码 / 非 C++ 代码 （均可选），并以某个格式存储于文件中，也许会添加对于一场比赛/一个题目的最早若干 AC 提交的支持。
+
+    脚本中也有封装好的 `fetch` `fetch_status` `fetch_source`，提供了爬取 codeforces 用户 status、根据 `contest_id` 与 `submission_id` 爬取代码的支持，但是还没有提供接口，可以直接将代码段拷贝下来用。
