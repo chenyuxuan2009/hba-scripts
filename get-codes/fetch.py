@@ -1,16 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-import json
-import os
-import requests
-import cloudscraper
-import time
-from lxml import etree
-from bs4 import BeautifulSoup
-
-scraper = cloudscraper.create_scraper()
-
 # internet options
 use_cloudscraper = False
 use_mirror = True
@@ -31,6 +21,15 @@ count_limit = 1
 only_cpp = True
 only_AC = True
 
+import json
+import os
+import requests
+if use_cloudscraper:
+    import cloudscraper
+import time
+from bs4 import BeautifulSoup
+
+scraper = cloudscraper.create_scraper()
 
 
 last_fetch_time = 0
@@ -63,7 +62,6 @@ def fetch_source(contest_id: int, submission_id: int) -> str:
     html = BeautifulSoup(html_str, 'html.parser')
     data = html.select(source_selector)
     return str(data[0].text)
-    
 
 def fetch_status(user_name: str, count: int = -1) -> str:
     count_suf = "" if count_limit == -1 else f"&count={count_limit}"
