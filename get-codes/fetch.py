@@ -17,7 +17,7 @@ source_selector = "#program-source-text"
 # codeforces options
 user_name = "tourist"
 default_rating = 1500
-count_limit = 1
+count_limit = 1     # count of submissions to fetch, -1 means no limit
 only_cpp = True
 only_AC = True
 
@@ -26,10 +26,11 @@ import os
 import requests
 if use_cloudscraper:
     import cloudscraper
+    scraper = cloudscraper.create_scraper()
 import time
 from bs4 import BeautifulSoup
 
-scraper = cloudscraper.create_scraper()
+
 
 
 last_fetch_time = 0
@@ -61,6 +62,9 @@ def fetch_source(contest_id: int, submission_id: int) -> str:
     html_str = fetch(url= submission_url)
     html = BeautifulSoup(html_str, 'html.parser')
     data = html.select(source_selector)
+    if len(data) == 0:
+        print("failed to fetch source code! maybe JSESSIONID not configured correctly")
+        exit()
     return str(data[0].text)
 
 def fetch_status(user_name: str, count: int = -1) -> str:
